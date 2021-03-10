@@ -1,6 +1,8 @@
 <?php
 
-class Cpf //value object
+namespace Alura\Banco\Modelo;
+
+final class Cpf //value object
 {
     private string $numero;
 
@@ -8,12 +10,12 @@ class Cpf //value object
     {
         $numero = filter_var($numero, FILTER_VALIDATE_REGEXP, [
             'options' => [
-                'regex' => '/^[0-9]{3}\.[0-9]{3}\.[0-9]{3}\-[0-9]{2}$/'
+                'regexp' => '/^[0-9]{3}\.[0-9]{3}\.[0-9]{3}\-[0-9]{2}$/'
             ]
         ]);
 
-        if ($numero == false) {
-            echo 'Número de CPF inválido.';
+        if ($numero === false) {
+            echo "CPF inválido.";
             exit();
         }
         $this->numero = $numero;
